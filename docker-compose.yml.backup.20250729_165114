@@ -29,24 +29,6 @@ services:
       - GCS_FILE_CACHE=${GCS_FILE_CACHE-False}
       - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT-}
       - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS-}
-      # OpenAI Models
-      - LLM_MODEL_CONFIG_openai_gpt_4o=${LLM_MODEL_CONFIG_openai_gpt_4o-}
-      - LLM_MODEL_CONFIG_openai_gpt_4o_mini=${LLM_MODEL_CONFIG_openai_gpt_4o_mini-}
-      - LLM_MODEL_CONFIG_openai_gpt_4_1=${LLM_MODEL_CONFIG_openai_gpt_4_1-}
-      - LLM_MODEL_CONFIG_openai_gpt_4_1_mini=${LLM_MODEL_CONFIG_openai_gpt_4_1_mini-}
-      - LLM_MODEL_CONFIG_openai_gpt_4_1_nano=${LLM_MODEL_CONFIG_openai_gpt_4_1_nano-}
-      - LLM_MODEL_CONFIG_openai_o3=${LLM_MODEL_CONFIG_openai_o3-}
-      - LLM_MODEL_CONFIG_openai_o3_pro=${LLM_MODEL_CONFIG_openai_o3_pro-}
-      - LLM_MODEL_CONFIG_openai_o4_mini=${LLM_MODEL_CONFIG_openai_o4_mini-}
-      - LLM_MODEL_CONFIG_openai_gpt_4_5=${LLM_MODEL_CONFIG_openai_gpt_4_5-}
-      # Anthropic Models
-      - LLM_MODEL_CONFIG_anthropic_claude_4_opus=${LLM_MODEL_CONFIG_anthropic_claude_4_opus-}
-      - LLM_MODEL_CONFIG_anthropic_claude_3_7_sonnet=${LLM_MODEL_CONFIG_anthropic_claude_3_7_sonnet-}
-      - LLM_MODEL_CONFIG_anthropic_claude_sonnet_4=${LLM_MODEL_CONFIG_anthropic_claude_sonnet_4-}
-      # Google Gemini Models
-      - LLM_MODEL_CONFIG_gemini_2_5_pro=${LLM_MODEL_CONFIG_gemini_2_5_pro-}
-      - LLM_MODEL_CONFIG_gemini_2_5_flash=${LLM_MODEL_CONFIG_gemini_2_5_flash-}
-      # Legacy Models (commented out)
 #      - LLM_MODEL_CONFIG_anthropic_claude_35_sonnet=${LLM_MODEL_CONFIG_anthropic_claude_35_sonnet-}
 #      - LLM_MODEL_CONFIG_fireworks_llama_v3_70b=${LLM_MODEL_CONFIG_fireworks_llama_v3_70b-}
 #      - LLM_MODEL_CONFIG_azure_ai_gpt_4o=${LLM_MODEL_CONFIG_azure_ai_gpt_4o-}
