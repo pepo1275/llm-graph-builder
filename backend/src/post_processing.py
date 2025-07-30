@@ -23,8 +23,16 @@ HYBRID_SEARCH_FULL_TEXT_QUERY = "CREATE FULLTEXT INDEX keyword FOR (n:Chunk) ON 
 COMMUNITY_INDEX_DROP_QUERY = "DROP INDEX community_keyword IF EXISTS;"
 COMMUNITY_INDEX_FULL_TEXT_QUERY = "CREATE FULLTEXT INDEX community_keyword FOR (n:`__Community__`) ON EACH [n.summary]" 
 
+# Import for dynamic dimension
+from src.shared.common_fn import load_embedding_model
+import os
+
+# Get dimension from configured embedding model
+# TODO: Future - implement EmbeddingConfig manager for centralized control
+_embedding_model = os.getenv('EMBEDDING_MODEL', 'all-MiniLM-L6-v2')
+_, CHUNK_VECTOR_EMBEDDING_DIMENSION = load_embedding_model(_embedding_model)
+
 CHUNK_VECTOR_INDEX_NAME = "vector"
-CHUNK_VECTOR_EMBEDDING_DIMENSION = 384
 
 DROP_CHUNK_VECTOR_INDEX_QUERY = f"DROP INDEX {CHUNK_VECTOR_INDEX_NAME} IF EXISTS;"
 CREATE_CHUNK_VECTOR_INDEX_QUERY = """

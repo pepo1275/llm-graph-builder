@@ -157,8 +157,17 @@ DROP_COMMUNITIES = "MATCH (c:`__Community__`) DETACH DELETE c"
 DROP_COMMUNITY_PROPERTY = "MATCH (e:`__Entity__`) REMOVE e.communities"
 
 
+# Import for dynamic dimensions
+from src.shared.common_fn import load_embedding_model
+import os
+
+# Get dimensions from configured embedding model
+# TODO: Future - implement EmbeddingConfig manager for centralized control
+_embedding_model = os.getenv('EMBEDDING_MODEL', 'all-MiniLM-L6-v2')
+_, _embedding_dimension = load_embedding_model(_embedding_model)
+
 ENTITY_VECTOR_INDEX_NAME = "entity_vector"
-ENTITY_VECTOR_EMBEDDING_DIMENSION = 384
+ENTITY_VECTOR_EMBEDDING_DIMENSION = _embedding_dimension
 
 DROP_ENTITY_VECTOR_INDEX_QUERY = f"DROP INDEX {ENTITY_VECTOR_INDEX_NAME} IF EXISTS;"
 CREATE_ENTITY_VECTOR_INDEX_QUERY = """
@@ -172,7 +181,7 @@ OPTIONS {{
 """ 
 
 COMMUNITY_VECTOR_INDEX_NAME = "community_vector"
-COMMUNITY_VECTOR_EMBEDDING_DIMENSION = 384
+COMMUNITY_VECTOR_EMBEDDING_DIMENSION = _embedding_dimension  # Use same dimension as entities
 
 DROP_COMMUNITY_VECTOR_INDEX_QUERY = f"DROP INDEX {COMMUNITY_VECTOR_INDEX_NAME} IF EXISTS;"
 CREATE_COMMUNITY_VECTOR_INDEX_QUERY = """
