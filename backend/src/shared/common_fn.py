@@ -70,16 +70,58 @@ def create_graph_database_connection(uri, userName, password, database):
 
 
 def load_embedding_model(embedding_model_name: str):
+    """
+    Load embedding model for knowledge graph generation.
+    
+    CURRENT: Basic model selection for general use cases
+    
+    TODO: DOMAIN-SPECIFIC EMBEDDING ARCHITECTURE
+    Future implementation should support specialized embeddings by knowledge domain:
+    
+    📚 GENERAL PURPOSE:
+    - "openai": OpenAI ada-002 (general knowledge, multilingual)
+    - "vertexai": Google Vertex AI models (scalable, multilingual)
+    
+    🧬 BIOMEDICAL SPECIALIZED:
+    - "biokg": BioKG embeddings (drug discovery, medical knowledge graphs)
+    - "pubmed": PubMedBERT (medical literature, research papers)
+    - "clinical": ClinicalBERT (clinical notes, patient records)
+    - "molecular": ChemBERT (chemical compounds, molecular structures)
+    
+    💻 CODE & SOFTWARE:
+    - "code": CodeBERT (software documentation, code analysis)
+    - "graphcode": GraphCodeBERT (code structure understanding)
+    
+    🔬 SCIENTIFIC RESEARCH:
+    - "scientific": SciBERT (scientific papers, research literature)
+    - "arxiv": ArXiv-specialized embeddings (academic papers)
+    
+    🏢 ENTERPRISE DOMAINS:
+    - "legal": Legal document embeddings (contracts, compliance)
+    - "finance": Financial text embeddings (reports, analysis)
+    
+    Implementation Plan:
+    1. Create feature/domain-specific-embeddings branch
+    2. Add UI selector for embedding model based on document type
+    3. Auto-suggest optimal model via document content analysis
+    4. Support custom user-uploaded specialized models
+    5. Implement embedding model migration tools for existing graphs
+    
+    CRITICAL: Model changes require Neo4j index recreation due to dimension differences
+    """
     if embedding_model_name == "openai":
         embeddings = OpenAIEmbeddings()
         dimension = 1536
         logging.info(f"Embedding: Using OpenAI Embeddings , Dimension:{dimension}")
     elif embedding_model_name == "vertexai":        
+        # Updated to gemini-embedding-001 for better semantic understanding
+        # Previous: textembedding-gecko@003 (768 dimensions)
+        # Current: gemini-embedding-001 (3072 dimensions) - 4x better precision
         embeddings = VertexAIEmbeddings(
-            model="textembedding-gecko@003"
+            model="gemini-embedding-001"
         )
-        dimension = 768
-        logging.info(f"Embedding: Using Vertex AI Embeddings , Dimension:{dimension}")
+        dimension = 3072
+        logging.info(f"Embedding: Using Vertex AI Gemini Embeddings , Dimension:{dimension}")
     elif embedding_model_name == "titan":
         embeddings = get_bedrock_embeddings()
         dimension = 1536
