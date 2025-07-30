@@ -26,13 +26,26 @@ services:
       - NUMBER_OF_CHUNKS_TO_COMBINE=${NUMBER_OF_CHUNKS_TO_COMBINE-6}
       - ENTITY_EMBEDDING=${ENTITY_EMBEDDING-False}
       - GCS_FILE_CACHE=${GCS_FILE_CACHE-False}
-#      - LLM_MODEL_CONFIG_anthropic_claude_35_sonnet=${LLM_MODEL_CONFIG_anthropic_claude_35_sonnet-}
-#      - LLM_MODEL_CONFIG_fireworks_llama_v3_70b=${LLM_MODEL_CONFIG_fireworks_llama_v3_70b-}
-#      - LLM_MODEL_CONFIG_azure_ai_gpt_4o=${LLM_MODEL_CONFIG_azure_ai_gpt_4o-}
-#      - LLM_MODEL_CONFIG_azure_ai_gpt_35=${LLM_MODEL_CONFIG_azure_ai_gpt_35-}
-#      - LLM_MODEL_CONFIG_groq_llama3_70b=${LLM_MODEL_CONFIG_groq_llama3_70b-}
-#      - LLM_MODEL_CONFIG_bedrock_claude_3_5_sonnet=${LLM_MODEL_CONFIG_bedrock_claude_3_5_sonnet-}
-#     - LLM_MODEL_CONFIG_fireworks_qwen_72b=${LLM_MODEL_CONFIG_fireworks_qwen_72b-}
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT-}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS-}
+      # OpenAI Models
+      - LLM_MODEL_CONFIG_openai_gpt_4o=${LLM_MODEL_CONFIG_openai_gpt_4o-}
+      - LLM_MODEL_CONFIG_openai_gpt_4o_mini=${LLM_MODEL_CONFIG_openai_gpt_4o_mini-}
+      - LLM_MODEL_CONFIG_openai_gpt_4_1=${LLM_MODEL_CONFIG_openai_gpt_4_1-}
+      - LLM_MODEL_CONFIG_openai_gpt_4_1_mini=${LLM_MODEL_CONFIG_openai_gpt_4_1_mini-}
+      - LLM_MODEL_CONFIG_openai_gpt_4_1_nano=${LLM_MODEL_CONFIG_openai_gpt_4_1_nano-}
+      - LLM_MODEL_CONFIG_openai_o3=${LLM_MODEL_CONFIG_openai_o3-}
+      - LLM_MODEL_CONFIG_openai_o3_pro=${LLM_MODEL_CONFIG_openai_o3_pro-}
+      - LLM_MODEL_CONFIG_openai_o4_mini=${LLM_MODEL_CONFIG_openai_o4_mini-}
+      - LLM_MODEL_CONFIG_openai_gpt_4_5=${LLM_MODEL_CONFIG_openai_gpt_4_5-}
+      # Anthropic Models
+      - LLM_MODEL_CONFIG_anthropic_claude_4_opus=${LLM_MODEL_CONFIG_anthropic_claude_4_opus-}
+      - LLM_MODEL_CONFIG_anthropic_claude_3_7_sonnet=${LLM_MODEL_CONFIG_anthropic_claude_3_7_sonnet-}
+      - LLM_MODEL_CONFIG_anthropic_claude_sonnet_4=${LLM_MODEL_CONFIG_anthropic_claude_sonnet_4-}
+      # Google Gemini Models
+      - LLM_MODEL_CONFIG_gemini_2_5_pro=${LLM_MODEL_CONFIG_gemini_2_5_pro-}
+      - LLM_MODEL_CONFIG_gemini_2_5_flash=${LLM_MODEL_CONFIG_gemini_2_5_flash-}
+      # Local Models
       - LLM_MODEL_CONFIG_ollama_llama3=${LLM_MODEL_CONFIG_ollama_llama3-}
     container_name: backend
     extra_hosts:
