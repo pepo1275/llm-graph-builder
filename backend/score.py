@@ -114,7 +114,7 @@ app.add_middleware(SessionMiddleware, secret_key=os.urandom(24))
 
 is_gemini_enabled = os.environ.get("GEMINI_ENABLED", "False").lower() in ("true", "1", "yes")
 if is_gemini_enabled:
-    add_routes(app,ChatVertexAI(), path="/vertexai")
+    add_routes(app,ChatVertexAI(model="gemini-2.5-pro"), path="/vertexai")
 
 app.add_api_route("/health", health([healthy_condition, healthy]))
 
