@@ -1,4 +1,3 @@
--f https://download.pytorch.org/whl/torch_stable.html 
-torch==2.3.1+cpu
-torchvision==0.18.1+cpu
-torchaudio==2.3.1+cpu
+# Temporarily empty - torch CPU pinning moved to requirements.txt
+# TODO: Implement --extra-index-url https://download.pytorch.org/whl/cpu in Dockerfile
+# See DEPENDENCY_RESOLUTION_PLAN.md for details
