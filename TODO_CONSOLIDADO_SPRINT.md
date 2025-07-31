@@ -36,6 +36,15 @@
 - [ ] Detección automática de hardware en desarrollo local
 - [ ] Documentar configuración para equipos con NVIDIA GPU
 
+### 4. Configuración de Vertex AI y Google Cloud
+**Fuente**: `VERTEX_AI_CONFIG.md` y análisis de esta sesión
+- [ ] Crear script de setup automático para Google Cloud (`setup-gcloud.sh`)
+- [ ] Implementar modo fallback cuando no hay credenciales de Vertex AI
+- [ ] Agregar validación de credenciales en startup del backend
+- [ ] Hacer path dinámico para volumen de gcloud en docker-compose
+- [ ] Documentar configuración para otros providers (OpenAI, Azure, AWS)
+- [ ] Implementar detección automática de credenciales disponibles
+
 ## 📝 TODOs de Código (P2) - Mejoras funcionales
 
 ### 1. Frontend
@@ -106,7 +115,7 @@
 | Prioridad | Categoría | Cantidad | Esfuerzo Estimado |
 |-----------|-----------|----------|-------------------|
 | P0 | Críticos | 4 items | 1-2 horas |
-| P1 | Arquitectura | 10 items | 2-3 días |
+| P1 | Arquitectura | 16 items | 3-4 días |
 | P2 | Código | 8 items | 3-5 días |
 | P3 | Infraestructura | 8 items | 1 semana |
 | P4 | Documentación | 8 items | 2-3 días |
